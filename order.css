@@ -1,0 +1,100 @@
+
+
+main {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+.order-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.order-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.order-form input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    width: 100%;
+}
+
+.order-form button {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.order-form button:hover {
+    background-color: #218838;
+}
+
+.bill-section {
+    margin-top: 30px;
+}
+
+.bill-section h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+#bill-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#bill-table th,
+#bill-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+#bill-table th {
+    background-color: #f2f2f2;
+}
+
+#bill-table tfoot td {
+    font-weight: bold;
+    background-color: #f2f2f2;
+}
+
+
+.goBackBtn {
+    padding: 9px;
+    position: absolute;
+    top: 27px;
+    left: 15px; 
+    background-color: #f1f1f1;
+    color: #1d1b1b; 
+    font-weight: 200;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+   
+}
+
+.goBackBtn:hover {
+    background-color:  #b0b9c3; 
+}
+
+
+
+
+

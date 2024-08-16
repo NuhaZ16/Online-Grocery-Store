@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorites</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Your Favorites</h1>
+        <button class="goBackBtn" onclick="window.location.href='index.html';">GO BACK</button>
+    </header>
+
+    <div class="container">
+        <h2>Items You've Favorited</h2>
+        <div class="favorites-container" id="favorites-items"></div>
+    </div>
+
+    <footer class="cosmetics-footer" id="fav-footer">
+        <div class="cosmetics-container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h2>About Grocies Supermarket</h2>
+                    <p>We are committed to providing the freshest groceries and top-quality products to our customers.</p>
+                    <div class="contact">
+                        <span><i class="fas fa-phone"></i> 123-456-7890</span>
+                        <span><i class="fas fa-envelope"></i> info@grocies.com</span>
+                    </div>
+                    <div class="socials">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section contact-form">
+                    <h2>Contact Us</h2>
+                    <form action="#">
+                        <input type="email" name="email" class="text-input contact-input" placeholder="Your email address">
+                        <textarea name="message" class="text-input contact-input" placeholder="Your message"></textarea>
+                        <button type="submit" class="btn contact-btn">
+                            <i class="fas fa-envelope"></i>
+                            Send
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Grocies Supermarket. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        // Function to add item to favorites
+        function addToFavorites(item) {
+            let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            if (!favorites.some(favoriteItem => favoriteItem.name === item.name)) {
+                favorites.push({ name: item.name });  // Store only the name
+            }
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+
+        // Function to display favorite items
+        function displayFavorites() {
+            const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            const favoritesContainer = document.getElementById('favorites-items');
+            
+            favoritesContainer.innerHTML = '';
+            
+            favorites.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('favorite-item');
+                itemElement.innerHTML = `
+                    <span class="favorite-item-name">${item.name}</span>
+                    <button class="remove-favorite-btn" onclick="removeFromFavorites('${item.name}')">Remove</button>
+                `;
+                favoritesContainer.appendChild(itemElement);
+            });
+        }
+
+        // Function to remove item from favorites
+        function removeFromFavorites(name) {
+            let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+            favorites = favorites.filter(item => item.name !== name);
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+            displayFavorites();  // Update the favorites list
+        }
+
+        // Call displayFavorites() when the page loads to display any existing favorites
+        displayFavorites();
+    </script>
+</body>
+</html>

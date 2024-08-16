@@ -1,0 +1,43 @@
+{
+    "header": {
+        "h1": "Welcome to Our Online Grocery Store"
+    },
+    "sections": {
+        "fruits": {
+            "h2": "Fruits",
+            "items": [
+                { "h3": "Watermelon", "p": "Rs. 100.00" },
+                { "h3": "Apples", "p": "Rs. 120.00" },
+                { "h3": "Strawberry", "p": "Rs. 150.00" },
+                { "h3": "Oranges", "p": "Rs. 150.00" },
+                { "h3": "Grapes", "p": "Rs. 150.00" },
+                { "h3": "Mangoes", "p": "Rs. 150.00" }
+            ]
+        },
+        "vegetables": {
+            "h2": "Vegetables",
+            "items": [
+                { "h3": "Cabbage/KG", "p": "Rs. 80.00" },
+                { "h3": "Tomato", "p": "Rs. 50.00" },
+                { "h3": "Lettuce", "p": "Rs. 60.00" },
+                { "h3": "Bellpepper", "p": "Rs. 60.00" },
+                { "h3": "Carrots", "p": "Rs. 60.00" },
+                { "h3": "Onions", "p": "Rs. 60.00" }
+            ]
+        },
+        "dairy-products": {
+            "h2": "Dairy Products",
+            "items": [
+                { "h3": "Fresh Milk", "p": "Rs. 90.00" },
+                { "h3": "Butter-LUPAK", "p": "Rs. 150.00" },
+                { "h3": "Cheese-Kothmale", "p": "Rs. 200.00" },
+                { "h3": "Cheese-Babybell", "p": "Rs. 200.00" },
+                { "h3": "Ice Cream-Rockyroad", "p": "Rs. 200.00" },
+                { "h3": "Ice Cream-Salted Caramel", "p": "Rs. 200.00" }
+            ]
+        }
+    },
+    "footer": {
+        "p": "footer"
+    }
+}

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Grocery Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body x-data="groceryStore">
+    <header>
+        <h1 x-text="header.h1"></h1>
+        <div class="header-icons">
+            <a href="./favorites.html" id="favorites-icon">
+                <i class="fas fa-heart"></i>
+            </a>
+            <a href="./cart.html" id="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section id="fruits">
+            <h2 x-text="sections.fruits.h2"></h2>
+            <div class="items">
+                <div class="item-card">
+                    <img src="fruits/watermelon.jpg" alt="Watermelon">
+                    <h3 x-text="sections.fruits.items[0].h3"></h3>
+                    <p x-text="sections.fruits.items[0].p"></p>
+                    <div class="quantity-wrapper">
+                        <input type="number" id="quantity-watermelon" min="1" value="1">
+                        <button onclick="addItem('Watermelon', 100, document.getElementById('quantity-watermelon').value)">Add to Cart</button>
+                        <button id="fav-watermelon" onclick="addToFavorites('Watermelon')">Add to Favorites</button>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="fruits/apples.jpg" alt="Apples">
+                    <h3 x-text="sections.fruits.items[1].h3"></h3>
+                    <p x-text="sections.fruits.items[1].p"></p>
+                    <div class="quantity-wrapper">
+                        <input type="number" id="quantity-apple" min="1" value="1">
+                        <button onclick="addItem('Apples', 120, document.getElementById('quantity-apple').value)">Add to Cart</button>
+                        <button id="fav-apple" onclick="addToFavorites('Apples')">Add to Favorites</button>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="fruits/strawberry.jpg" alt="Strawberry">
+                    <h3 x-text="sections.fruits.items[2].h3"></h3>
+                    <p x-text="sections.fruits.items[2].p"></p>
+                    <div class="quantity-wrapper">
+                        <input type="number" id="quantity-strawberry" min="1" value="1">
+                        <button onclick="addItem('Strawberry', 150, document.getElementById('quantity-strawberry').value)">Add to Cart</button>
+                        <button id="fav-strawberry" onclick="addToFavorites('Strawberry')">Add to Favorites</button>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="fruits/oranges.jpg" alt="Oranges">
+                    <h3 x-text="sections.fruits.items[3].h3"></h3>
+                    <p x-text="sections.fruits.items[3].p"></p>
+                    <div class="quantity-wrapper">
+                        <input type="number" id="quantity-oranges" min="1" value="1">
+                        <button onclick="addItem('Oranges', 150, document.getElementById('quantity-oranges').value)">Add to Cart</button>
+                        <button id="fav-oranges" onclick="addToFavorites('Oranges')">Add to Favorites</button>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="fruits/grape.jpg" alt="Grapes">
+                    <h3 x-text="sections.fruits.items[4].h3"></h3>
+                    <p x-text="sections.fruits.items[4].p"></p>
+                    <div class="quantity-wrapper">
+                        <input type="number" id="quantity-grapes" min="1" value="1">
+                        <button onclick="addItem('Grapes', 150, document.getElementById('quantity-grapes').value)">Add to Cart</button>
+                        <button id="fav-grapes" onclick="addToFavorites('Grapes')">Add to Favorites</button>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="fruits/mango.jpg" alt="Mangoes">
+                    <h3 x-text="sections.fruits.items[5].h3"></h3>
+                    <p x-text="sections.fruits.items[5].p"></p>
+                    <div class="quantity-wrapper">
+                        <input type="number" id="quantity-mango" min="1" value="1">
+                        <button onclick="addItem('Mangoes', 150, document.getElementById('quantity-mango').value)">Add to Cart</button>
+                        <button id="fav-mango" onclick="addToFavorites('Mangoes')">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="vegetables">
+            <h2 x-text="sections.vegetables.h2"></h2>
+            <div class="items">
+                <div class="item-card">
+                    <img src="veg/cabbage.jpg" alt="Cabbage">
+                    <h3 x-text="sections.vegetables.items[0].h3"></h3>
+                    <p x-text="sections.vegetables.items[0].p"></p>
+                    <div class="quantity-wrapper">
+                        <input type="number" id="quantity-cabbage" min="1" value="1">
+                        <button onclick="addItem('Cabbage', 80, document.getElementById('quantity-cabbage').value)">Add to Cart</button>
+                        <button id="fav-cabbage" onclick="addToFavorites('Cabbage')">Add to Favorites</button>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="veg/tom.jpg" alt="Tomato">
+                    <h3 x-text="sections.vegetables.items[1].h3"></h3>
+                    <p x-text="sections.vegetables.items[1].p"></p>
+                    <div class="quantity-wrapper">
+                        <input type="number" id="quantity-tomato" min="1" value="1">
+                        <button onclick="addItem('Tomato', 50, document.getElementById('quantity-tomato').value)">Add to Cart</button>
+                        <button id="fav-tomato" onclick="addToFavorites('Tomato')">Add to Favorites</button>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="veg/lettuce.jpg" alt="Lettuce">
+                    <h3 x-text="sections.vegetables.items[2].h3"></h3>
+                    <p x-text="sections.vegetables.items[2].p"></p>
+                    <div class="quantity-wrapper">
+                        <input type="number" id="quantity-lettuce" min="1" value="1">
+                        <button onclick="addItem('Lettuce', 60, document.getElementById('quantity-lettuce').value)">Add to Cart</button>
+                        <button id="fav-lettuce" onclick="addToFavorites('Lettuce')">Add to Favorites</button>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="veg/bellpepper.jpg" alt="Bellpepper">
+                    <h3 x-text="sections.vegetables.items[3].h3"></h3>
+                    <p x-text="sections.vegetables.items[3].p"></p>
+                    <div class="quantity-wrapper">
+                        <input type="number" id="quantity-bellpepper" min="1" value="1">
+                        <button onclick="addItem('Bellpepper', 60, document.getElementById('quantity-bellpepper').value)">Add to Cart</button>
+                        <button id="fav-bellpepper" onclick="addToFavorites('Bellpepper')">Add to Favorites</button>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="veg/carrots.jpg" alt="Carrots">
+                    <h3 x-text="sections.vegetables.items[4].h3"></h3>
+                    <p x-text="sections.vegetables.items[4].p"></p>
+                    <div class="quantity-wrapper">
+                        <input type="number" id="quantity-carrots" min="1" value="1">
+                        <button onclick="addItem('Carrots', 60, document.getElementById('quantity-carrots').value)">Add to Cart</button>
+                        <button id="fav-carrots" onclick="addToFavorites('Carrots')">Add to Favorites</button>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="veg/onion.jpg" alt="Onions">
+                    <h3 x-text="sections.vegetables.items[5].h3"></h3>
+                    <p x-text="sections.vegetables.items[5].p"></p>
+                    <div class="quantity-wrapper">
+                        <input type="number" id="quantity-onions" min="1" value="1">
+                        <button onclick="addItem('Onions', 60, document.getElementById('quantity-onions').value)">Add to Cart</button>
+                        <button id="fav-onions" onclick="addToFavorites('Onions')">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="dairy-products">
+            <h2 x-text="sections['dairy-products'].h2"></h2>
+            <div class="items">
+                <div class="item-card">
+                    <img src="dairy/milk.webp" alt="Fresh Milk">
+                    <h3 x-text="sections['dairy-products'].items[0].h3"></h3>
+                    <p x-text="sections['dairy-products'].items[0].p"></p>
+                    <div class="quantity-wrapper">
+                        <input type="number" id="quantity-milk" min="1" value="1">
+                        <button onclick="addItem('Fresh Milk', 90, document.getElementById('quantity-milk').value)">Add to Cart</button>
+                        <button id="fav-milk" onclick="addToFavorites('Fresh Milk')">Add to Favorites</button>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="dairy/butter.webp" alt="Butter-LUPAK">
+                    <h3 x-text="sections['dairy-products'].items[1].h3"></h3>
+                    <p x-text="sections['dairy-products'].items[1].p"></p>
+                    <div class="quantity-wrapper">
+                        <input type="number" id="quantity-butter" min="1" value="1">
+                        <button onclick="addItem('Butter-LUPAK', 150, document.getElementById('quantity-butter').value)">Add to Cart</button>
+                        <button id="fav-butter" onclick="addToFavorites('Butter-LUPAK')">Add to Favorites</button>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="dairy/cheese.jpg" alt="Cheese">
+                    <h3 x-text="sections['dairy-products'].items[2].h3"></h3>
+                    <p x-text="sections['dairy-products'].items[2].p"></p>
+                    <div class="quantity-wrapper">
+                        <input type="number" id="quantity-cheese" min="1" value="1">
+                        <button onclick="addItem('Cheese', 200, document.getElementById('quantity-cheese').value)">Add to Cart</button>
+                        <button id="fav-cheese" onclick="addToFavorites('Cheese')">Add to Favorites</button>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="dairy/cheese2.jpg" alt="Yogurt">
+                    <h3 x-text="sections['dairy-products'].items[3].h3"></h3>
+                    <p x-text="sections['dairy-products'].items[3].p"></p>
+                    <div class="quantity-wrapper">
+                        <input type="number" id="quantity-yogurt" min="1" value="1">
+                        <button onclick="addItem('Yogurt', 130, document.getElementById('quantity-yogurt').value)">Add to Cart</button>
+                        <button id="fav-yogurt" onclick="addToFavorites('Yogurt')">Add to Favorites</button>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="dairy/icecream1.jpg" alt="Mozarella Cheese">
+                    <h3 x-text="sections['dairy-products'].items[4].h3"></h3>
+                    <p x-text="sections['dairy-products'].items[4].p"></p>
+                    <div class="quantity-wrapper">
+                        <input type="number" id="quantity-mozarella" min="1" value="1">
+                        <button onclick="addItem('Mozarella Cheese', 230, document.getElementById('quantity-mozarella').value)">Add to Cart</button>
+                        <button id="fav-mozarella" onclick="addToFavorites('Mozarella Cheese')">Add to Favorites</button>
+                    </div>
+                </div>
+                <div class="item-card">
+                    <img src="dairy/icecream2.jpg" alt="Ice Cream">
+                    <h3 x-text="sections['dairy-products'].items[5].h3"></h3>
+                    <p x-text="sections['dairy-products'].items[5].p"></p>
+                    <div class="quantity-wrapper">
+                        <input type="number" id="quantity-icecream" min="1" value="1">
+                        <button onclick="addItem('Ice Cream', 180, document.getElementById('quantity-icecream').value)">Add to Cart</button>
+                        <button id="fav-icecream" onclick="addToFavorites('Ice Cream')">Add to Favorites</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="cosmetics-footer">
+        <div class="cosmetics-container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h2>About Grocies Supermarket</h2>
+                    <p>We are committed to providing the freshest groceries and top-quality products to our customers.</p>
+                    <div class="contact">
+                        <span><i class="fas fa-phone"></i> 123-456-7890</span>
+                        <span><i class="fas fa-envelope"></i> info@grocies.com</span>
+                    </div>
+                    <div class="socials">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section contact-form">
+                    <h2>Contact Us</h2>
+                    <form action="#">
+                        <input type="email" name="email" class="text-input contact-input" placeholder="Your email address">
+                        <textarea name="message" class="text-input contact-input" placeholder="Your message"></textarea>
+                        <button type="submit" class="btn contact-btn">
+                            <i class="fas fa-envelope"></i>
+                            Send
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Grocies Supermarket. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.4/dist/cdn.min.js" defer></script>
+    <script src="main2.js"></script>
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('groceryStore', () => ({
+                header: {},
+                sections: {
+                    fruits: { h2: '', items: [] },
+                    vegetables: { h2: '', items: [] },
+                    'dairy-products': { h2: '', items: [] }
+                },
+                footer: {},
+                init() {
+                    fetch('index.json')
+                        .then(response => response.json())
+                        .then(data => {
+                            this.header = data.header;
+                            this.sections = data.sections;
+                            this.footer = data.footer;
+                        })
+                        .catch(error => console.error('Error loading JSON:', error));
+                }
+            }))
+        });
+
+        function addToFavorites(itemName) {
+            alert(itemName + " has been added to your favorites!");
+            // You can extend this function to store the favorites in localStorage or send them to a server
+        }
+    </script>
+</body>
+
+</html>

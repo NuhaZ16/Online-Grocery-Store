@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <h1>Shopping Cart</h1>
+        <button class="goBackBtn" id="goBackBtn">GO BACK</button>
+    </header>
+
+    <div class="container">
+        <h2>Your Cart</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items"></tbody>
+        </table>
+        <div class="total">
+            Total: Rs. <span id="cart-total">0.00</span>
+        </div>
+        <div class="actions">
+            <button onclick="checkout()">Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('goBackBtn').addEventListener('click', function() {
+            window.location.href = 'index.html'; 
+        });
+
+        function updateCart() {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartTableBody = document.getElementById('cart-items');
+            const cartTotalSpan = document.getElementById('cart-total');
+
+            cartTableBody.innerHTML = '';
+            let total = 0;
+
+            cartItems.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td><input type="number" value="${item.quantity}" min="1" onchange="updateQuantity('${item.name}', this.value)"></td>
+                    <td>Rs. ${item.price.toFixed(2)}</td>
+                    <td>Rs. ${item.totalForItem.toFixed(2)}</td>
+                    <td><button onclick="removeItem('${item.name}')">Remove</button></td>
+                `;
+                cartTableBody.appendChild(row);
+                total += item.totalForItem;
+            });
+
+            cartTotalSpan.textContent = total.toFixed(2);
+        }
+
+        function updateQuantity(name, quantity) {
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            cartItems = cartItems.map(item => {
+                if (item.name === name) {
+                    item.quantity = parseInt(quantity, 10);
+                    item.totalForItem = item.quantity * item.price;
+                }
+                return item;
+            });
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            updateCart(); 
+        }
+
+        function removeItem(name) {
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            cartItems = cartItems.filter(item => item.name !== name);
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            updateCart(); 
+        }
+
+        function checkout() {
+            alert('Proceed to checkout!'); 
+            location.href = 'confirm.html'
+        }
+
+        updateCart();
+    </script>
+    <footer class="cosmetics-footer" id="footer-cart">
+        <div class="cosmetics-container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h2>About Grocies Supermarket</h2>
+                    <p>We are committed to providing the freshest groceries and top-quality products to our customers.</p>
+                    <div class="contact">
+                        <span><i class="fas fa-phone"></i> 123-456-7890</span>
+                        <span><i class="fas fa-envelope"></i> info@grocies.com</span>
+                    </div>
+                    <div class="socials">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section contact-form">
+                    <h2>Contact Us</h2>
+                    <form action="#">
+                        <input type="email" name="email" class="text-input contact-input" placeholder="Your email address">
+                        <textarea name="message" class="text-input contact-input" placeholder="Your message"></textarea>
+                        <button type="submit" class="btn contact-btn">
+                            <i class="fas fa-envelope"></i>
+                            Send
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Grocies Supermarket. All rights reserved.
+        </div>
+    </footer>
+</body>
+
+</html>

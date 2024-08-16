@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
+    <link rel="stylesheet" href="order.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <button class="goBackBtn" id="goBackBtn">GO BACK</button>
+        <h1>Order Confirmation</h1>
+    </header>
+    
+    <main>
+        <form id="order-form" class="order-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="address">Delivery Address:</label>
+            <input type="text" id="address" name="address" required>
+            
+            <label for="payment">Payment Information:</label>
+            <input type="text" id="payment" name="payment" required>
+            
+            <button type="submit">Pay</button>
+        </form>
+
+        <section id="bill-section" class="bill-section">
+            <h2>Your Order</h2>
+            <table id="bill-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="bill-items">
+                   
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Grand Total</td>
+                        <td id="grand-total"></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('order-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your purchase! Your order will be delivered on the specified date.');
+           
+        });
+
+        document.getElementById('goBackBtn').addEventListener('click', function() {
+            window.location.href = 'cart.html'; 
+        });
+
+        function loadBill() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const billItems = document.getElementById('bill-items');
+            const grandTotal = document.getElementById('grand-total');
+            let total = 0;
+
+            billItems.innerHTML = ''; 
+
+            cart.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.quantity}</td>
+                    <td>Rs. ${item.price.toFixed(2)}</td>
+                    <td>Rs. ${item.totalForItem.toFixed(2)}</td>
+                `;
+                billItems.appendChild(row);
+                total += item.totalForItem;
+            });
+
+            grandTotal.textContent = `Rs. ${total.toFixed(2)}`;
+        }
+
+        window.onload = loadBill;
+    </script>
+    <footer class="cosmetics-footer">
+        <div class="cosmetics-container">
+            <div class="footer-content">
+                <div class="footer-section about">
+                    <h2>About Grocies Supermarket</h2>
+                    <p>We are committed to providing the freshest groceries and top-quality products to our customers.</p>
+                    <div class="contact">
+                        <span><i class="fas fa-phone"></i> 123-456-7890</span>
+                        <span><i class="fas fa-envelope"></i> info@grocies.com</span>
+                    </div>
+                    <div class="socials">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section contact-form">
+                    <h2>Contact Us</h2>
+                    <form action="#">
+                        <input type="email" name="email" class="text-input contact-input" placeholder="Your email address">
+                        <textarea name="message" class="text-input contact-input" placeholder="Your message"></textarea>
+                        <button type="submit" class="btn contact-btn">
+                            <i class="fas fa-envelope"></i>
+                            Send
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Grocies Supermarket. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
